@@ -60,26 +60,24 @@ class BOMInstallCommand extends Command
     private function checkDependencies(): bool
     {
         $dependencies = [
-            'products' => 'Products plugin is required for BOM functionality',
-            'inventories' => 'Inventories plugin is required for BOM functionality',
+            'Webkul\Product\ProductServiceProvider' => 'Products plugin is required for BOM functionality',
+            'Webkul\Inventory\InventoryServiceProvider' => 'Inventories plugin is required for BOM functionality',
         ];
 
         $missing = [];
 
-        foreach ($dependencies as $plugin => $message) {
-            // Check if plugin is installed by looking for its service provider
-            $providerClass = 'Webkul\\' . ucfirst($plugin) . '\\' . ucfirst($plugin) . 'ServiceProvider';
-            
+        foreach ($dependencies as $providerClass => $message) {
             if (!class_exists($providerClass)) {
-                $missing[] = $plugin;
+                $missing[] = $providerClass;
                 $this->error("❌ {$message}");
             }
         }
 
         if (!empty($missing)) {
-            $this->error('Please install the missing dependencies first:');
-            foreach ($missing as $plugin) {
-                $this->line("  php artisan {$plugin}:install");
+            $this->error('Please install the missing dependencies first.');
+            $this->error('Make sure the following service providers are registered:');
+            foreach ($missing as $provider) {
+                $this->line("  {$provider}");
             }
             return false;
         }

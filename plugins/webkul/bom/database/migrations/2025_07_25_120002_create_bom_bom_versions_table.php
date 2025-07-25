@@ -16,8 +16,8 @@ return new class extends Migration
             $table->date('expiry_date')->nullable();
             $table->text('change_description')->nullable();
             $table->text('change_reason')->nullable();
-            $table->uuid('created_by')->nullable();
-            $table->uuid('company_id');
+            $table->bigInteger('created_by')->unsigned()->nullable();
+            $table->bigInteger('company_id')->unsigned();
             $table->timestamps();
 
             // Indexes

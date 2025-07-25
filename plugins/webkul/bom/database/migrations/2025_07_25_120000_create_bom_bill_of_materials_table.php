@@ -12,19 +12,19 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('reference')->unique();
-            $table->uuid('product_id');
+            $table->bigInteger('product_id')->unsigned();
             $table->string('version')->default('1.0');
             $table->enum('type', ['standard', 'kit', 'phantom', 'assembly'])->default('standard');
             $table->enum('state', ['draft', 'active', 'obsolete', 'archived'])->default('draft');
             $table->decimal('quantity_to_produce', 10, 4)->default(1);
-            $table->uuid('unit_id')->nullable();
+            $table->bigInteger('unit_id')->unsigned()->nullable();
             $table->date('effective_date')->nullable();
             $table->date('expiry_date')->nullable();
             $table->text('description')->nullable();
             $table->text('notes')->nullable();
-            $table->uuid('company_id');
-            $table->uuid('created_by')->nullable();
-            $table->uuid('updated_by')->nullable();
+            $table->bigInteger('company_id')->unsigned();
+            $table->bigInteger('created_by')->unsigned()->nullable();
+            $table->bigInteger('updated_by')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -36,7 +36,7 @@ return new class extends Migration
 
             // Foreign keys
             $table->foreign('product_id')->references('id')->on('products_products')->onDelete('cascade');
-            $table->foreign('unit_id')->references('id')->on('products_uoms')->onDelete('set null');
+            $table->foreign('unit_id')->references('id')->on('unit_of_measures')->onDelete('set null');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');

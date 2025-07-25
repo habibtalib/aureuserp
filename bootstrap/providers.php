@@ -26,4 +26,5 @@ return [
     Webkul\TimeOff\TimeOffServiceProvider::class,
     Webkul\Timesheet\TimesheetServiceProvider::class,
     Webkul\Website\WebsiteServiceProvider::class,
+    Webkul\BOM\BOMServiceProvider::class,
 ];
