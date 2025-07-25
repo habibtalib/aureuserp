@@ -49,7 +49,7 @@ class BomLine extends Model
 
     public function unit(): BelongsTo
     {
-        return $this->belongsTo(\Webkul\Product\Models\UOM::class);
+        return $this->belongsTo(\Webkul\Support\Models\UOM::class);
     }
 
     public function subBom(): BelongsTo

@@ -16,12 +16,16 @@ class BillOfMaterialFactory extends Factory
         return [
             'name' => $this->faker->words(3, true) . ' BOM',
             'reference' => 'BOM-' . $this->faker->unique()->numberBetween(1000, 9999),
-            'product_id' => \Webkul\Product\Models\Product::factory(),
+            'product_id' => function () {
+                return \Webkul\Product\Models\Product::inRandomOrder()->first()?->id ?? 1;
+            },
             'version' => $this->faker->randomElement(['1.0', '1.1', '2.0', '2.1']),
             'type' => $this->faker->randomElement(BomType::cases()),
             'state' => $this->faker->randomElement([BomState::DRAFT, BomState::ACTIVE]),
             'quantity_to_produce' => $this->faker->randomFloat(4, 1, 100),
-            'unit_id' => \Webkul\Product\Models\UOM::factory(),
+            'unit_id' => function () {
+                return \Webkul\Support\Models\UOM::inRandomOrder()->first()?->id ?? 1;
+            },
             'effective_date' => $this->faker->optional(0.7)->dateTimeBetween('-1 month', '+1 month'),
             'expiry_date' => $this->faker->optional(0.3)->dateTimeBetween('+1 month', '+1 year'),
             'description' => $this->faker->optional(0.8)->sentence(),

@@ -22,5 +22,5 @@ return [
     Webkul\TimeOff\TimeOffPlugin::class,
     Webkul\Timesheet\TimesheetPlugin::class,
     Webkul\Website\WebsitePlugin::class,
-    // Webkul\BOM\BOMPlugin::class,
+    Webkul\BOM\BOMPlugin::class,
 ];

@@ -35,14 +35,18 @@ class ViewBillOfMaterial extends ViewRecord
             Actions\Action::make('explode_bom')
                 ->icon('heroicon-o-list-bullet')
                 ->color('info')
-                ->url(fn () => route('filament.admin.resources.bill-of-materials.explode', $this->getRecord()))
-                ->openUrlInNewTab(),
+                ->action(function () {
+                    $exploded = $this->getRecord()->explodeBom();
+                    $this->notify('success', 'BOM exploded successfully! Found ' . count($exploded) . ' components.');
+                }),
 
             Actions\Action::make('where_used')
                 ->icon('heroicon-o-magnifying-glass')
                 ->color('gray')
-                ->url(fn () => route('filament.admin.resources.bill-of-materials.where-used', $this->getRecord()))
-                ->openUrlInNewTab(),
+                ->action(function () {
+                    $whereUsed = $this->getRecord()->whereUsed();
+                    $this->notify('info', 'Found ' . $whereUsed->count() . ' BOMs using this product.');
+                }),
         ];
     }
 

@@ -14,15 +14,16 @@ class BomLineFactory extends Factory
     {
         return [
             'bom_id' => \Webkul\BOM\Models\BillOfMaterial::factory(),
-            'product_id' => \Webkul\Product\Models\Product::factory(),
+            'product_id' => function () {
+                return \Webkul\Product\Models\Product::inRandomOrder()->first()?->id ?? 1;
+            },
             'quantity' => $this->faker->randomFloat(4, 0.1, 50),
-            'unit_id' => \Webkul\Product\Models\UOM::factory(),
+            'unit_id' => function () {
+                return \Webkul\Support\Models\UOM::inRandomOrder()->first()?->id ?? 1;
+            },
             'sequence' => $this->faker->numberBetween(10, 100),
             'component_type' => $this->faker->randomElement(ComponentType::cases()),
-            'sub_bom_id' => $this->faker->optional(0.2)->randomElement([
-                \Webkul\BOM\Models\BillOfMaterial::factory(),
-                null
-            ]),
+            'sub_bom_id' => null, // Will be set by specific factory states when needed
             'waste_percentage' => $this->faker->randomFloat(2, 0, 10),
             'is_optional' => $this->faker->boolean(20), // 20% chance of being optional
             'notes' => $this->faker->optional(0.4)->sentence(),
@@ -50,7 +51,9 @@ class BomLineFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'component_type' => ComponentType::SUB_ASSEMBLY,
-            'sub_bom_id' => \Webkul\BOM\Models\BillOfMaterial::factory(),
+            'sub_bom_id' => function () {
+                return \Webkul\BOM\Models\BillOfMaterial::inRandomOrder()->first()?->id;
+            },
         ]);
     }
 

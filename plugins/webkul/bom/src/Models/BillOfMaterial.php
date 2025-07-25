@@ -12,7 +12,7 @@ use Webkul\BOM\Database\Factories\BillOfMaterialFactory;
 use Webkul\BOM\Enums\BomState;
 use Webkul\BOM\Enums\BomType;
 use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Fields\Traits\HasCustomFields;
+use Webkul\Field\Traits\HasCustomFields;
 use Webkul\Product\Models\Product;
 
 class BillOfMaterial extends Model
@@ -54,7 +54,7 @@ class BillOfMaterial extends Model
 
     public function unit(): BelongsTo
     {
-        return $this->belongsTo(\Webkul\Product\Models\UOM::class);
+        return $this->belongsTo(\Webkul\Support\Models\UOM::class);
     }
 
     public function bomLines(): HasMany

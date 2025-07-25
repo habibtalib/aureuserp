@@ -3,6 +3,7 @@
 namespace Webkul\BOM;
 
 use Filament\Contracts\Plugin;
+use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Webkul\BOM\Filament\Resources\BillOfMaterialResource;
@@ -23,11 +24,9 @@ class BOMPlugin implements Plugin
                 BillOfMaterialResource::class,
             ])
             ->navigationGroups([
-                'Manufacturing' => [
-                    'label' => 'Manufacturing',
-                    'icon' => 'heroicon-o-wrench-screwdriver',
-                    'sort' => 3,
-                ],
+                NavigationGroup::make()
+                    ->label('Manufacturing')
+                    ->icon('heroicon-o-wrench-screwdriver'),
             ]);
     }
 
