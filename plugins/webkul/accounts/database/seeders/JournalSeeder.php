@@ -14,7 +14,11 @@ class JournalSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('accounts_journals')->delete();
+        // Only seed if journals table is empty to avoid foreign key constraint issues
+        if (DB::table('accounts_journals')->count() > 0) {
+            $this->command->info('Journals already exist, skipping seeder.');
+            return;
+        }
 
         $user = User::first();
 

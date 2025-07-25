@@ -13,7 +13,11 @@ class ProductCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products_categories')->delete();
+        // Only seed if categories table is empty to avoid foreign key constraint issues
+        if (DB::table('products_categories')->count() > 0) {
+            $this->command->info('Product categories already exist, skipping seeder.');
+            return;
+        }
 
         $user = User::first();
 

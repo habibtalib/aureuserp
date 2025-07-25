@@ -14,11 +14,11 @@ class AccountSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('accounts_payment_method_lines')->delete();
-
-        DB::table('accounts_journals')->delete();
-
-        DB::table('accounts_accounts')->delete();
+        // Only seed if accounts table is empty to avoid foreign key constraint issues
+        if (DB::table('accounts_accounts')->count() > 0) {
+            $this->command->info('Accounts already exist, skipping seeder.');
+            return;
+        }
 
         $user = User::first();
 
