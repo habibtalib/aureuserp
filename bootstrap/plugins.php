@@ -23,4 +23,5 @@ return [
     Webkul\Timesheet\TimesheetPlugin::class,
     Webkul\Website\WebsitePlugin::class,
     Webkul\BOM\BOMPlugin::class,
+    Webkul\Claims\ClaimsPlugin::class,
 ];

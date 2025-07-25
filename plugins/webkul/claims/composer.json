@@ -1,0 +1,35 @@
+{
+    "name": "webkul/claims",
+    "description": "Employee Claims Management plugin for AureusERP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Webkul",
+            "email": "support@webkul.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0",
+        "filament/filament": "^3.0",
+        "webkul/employees": "*",
+        "webkul/accounts": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webkul\\Claims\\": "src/",
+            "Webkul\\Claims\\Database\\Factories\\": "database/factories/",
+            "Webkul\\Claims\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\Claims\\ClaimsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
