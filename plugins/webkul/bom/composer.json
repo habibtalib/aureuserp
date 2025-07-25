@@ -1,0 +1,35 @@
+{
+    "name": "webkul/bom",
+    "description": "Bill of Materials management plugin for AureusERP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Webkul",
+            "email": "support@webkul.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0",
+        "filament/filament": "^3.0",
+        "webkul/products": "*",
+        "webkul/inventories": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webkul\\BOM\\": "src/",
+            "Webkul\\BOM\\Database\\Factories\\": "database/factories/",
+            "Webkul\\BOM\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\BOM\\BOMServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
