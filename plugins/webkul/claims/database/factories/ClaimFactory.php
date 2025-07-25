@@ -28,7 +28,7 @@ class ClaimFactory extends Factory
             'submitted_at' => $this->faker->optional(0.8)->dateTimeBetween('-2 months', 'now'),
             'approved_at' => $this->faker->optional(0.4)->dateTimeBetween('-1 month', 'now'),
             'paid_at' => $this->faker->optional(0.2)->dateTimeBetween('-2 weeks', 'now'),
-            'approved_by' => $this->faker->optional(0.4)->randomElement([null, Employee::factory()]),
+            'approved_by' => null, // Will be set by state methods
             'approval_notes' => $this->faker->optional(0.3)->sentence(),
             'rejection_reason' => $this->faker->optional(0.1)->sentence(),
             'company_id' => Company::factory(),
@@ -81,7 +81,7 @@ class ClaimFactory extends Factory
             'submitted_at' => $this->faker->dateTimeBetween('-2 months', '-1 month'),
             'approved_at' => $this->faker->dateTimeBetween('-1 month', '-1 week'),
             'paid_at' => null,
-            'approved_by' => Employee::factory(),
+            'approved_by' => 1, // Use system admin ID for testing
             'approval_notes' => $this->faker->optional(0.7)->sentence(),
             'rejection_reason' => null,
         ]);
@@ -107,7 +107,7 @@ class ClaimFactory extends Factory
             'submitted_at' => $this->faker->dateTimeBetween('-3 months', '-2 months'),
             'approved_at' => $this->faker->dateTimeBetween('-2 months', '-1 month'),
             'paid_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
-            'approved_by' => Employee::factory(),
+            'approved_by' => 1, // Use system admin ID for testing
             'approval_notes' => $this->faker->optional(0.7)->sentence(),
             'rejection_reason' => null,
         ]);

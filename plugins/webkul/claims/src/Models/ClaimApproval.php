@@ -46,7 +46,7 @@ class ClaimApproval extends Model
 
     public function approver(): BelongsTo
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(Employee::class, 'approver_id', 'id');
     }
 
     public function company(): BelongsTo

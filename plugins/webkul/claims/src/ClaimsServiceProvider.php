@@ -5,7 +5,7 @@ namespace Webkul\Claims;
 use Illuminate\Console\Scheduling\Schedule;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Webkul\Claims\Commands\ClaimsInstallCommand;
+use Webkul\Claims\Console\Commands\InstallCommand;
 
 class ClaimsServiceProvider extends PackageServiceProvider
 {
@@ -24,7 +24,7 @@ class ClaimsServiceProvider extends PackageServiceProvider
                 'create_claims_attachments_table',
             ])
             ->hasCommands([
-                ClaimsInstallCommand::class,
+                InstallCommand::class,
             ]);
     }
 

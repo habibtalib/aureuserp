@@ -71,7 +71,7 @@ class Claim extends Model
     // Relationships
     public function employee(): BelongsTo
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(Employee::class, 'employee_id', 'id');
     }
 
     public function category(): BelongsTo
@@ -81,7 +81,7 @@ class Claim extends Model
 
     public function approver(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'approved_by');
+        return $this->belongsTo(Employee::class, 'approved_by', 'id');
     }
 
     public function company(): BelongsTo

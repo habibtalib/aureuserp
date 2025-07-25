@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('claims_claims', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('claim_number')->unique();
-            $table->uuid('employee_id');
+            $table->bigInteger('employee_id')->unsigned();
             $table->uuid('category_id');
             $table->string('title');
             $table->text('description')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('submitted_at')->nullable();
             $table->date('approved_at')->nullable();
             $table->date('paid_at')->nullable();
-            $table->uuid('approved_by')->nullable();
+            $table->bigInteger('approved_by')->unsigned()->nullable();
             $table->text('approval_notes')->nullable();
             $table->text('rejection_reason')->nullable();
             $table->bigInteger('company_id')->unsigned();

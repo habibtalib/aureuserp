@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('claims_approvals', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('claim_id');
-            $table->uuid('approver_id');
+            $table->bigInteger('approver_id')->unsigned();
             $table->integer('level');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->text('comments')->nullable();
