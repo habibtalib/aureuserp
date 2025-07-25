@@ -18,7 +18,7 @@
         "flowframe/laravel-trend": "^0.3.0",
         "guava/filament-icon-picker": "^2.0",
         "hugomyb/filament-media-action": "v3.1.1.5",
-        "laravel/framework": "^11.9",
+        "laravel/framework": "^11.45",
         "laravel/tinker": "^2.9",
         "milon/barcode": "^11.0",
         "saade/filament-fullcalendar": "^3.0",
