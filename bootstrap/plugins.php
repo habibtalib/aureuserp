@@ -24,4 +24,5 @@ return [
     Webkul\Website\WebsitePlugin::class,
     Webkul\BOM\BOMPlugin::class,
     Webkul\Claims\ClaimsPlugin::class,
+    Webkul\Payslip\PayslipPlugin::class,
 ];

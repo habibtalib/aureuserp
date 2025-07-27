@@ -28,4 +28,5 @@ return [
     Webkul\Website\WebsiteServiceProvider::class,
     Webkul\BOM\BOMServiceProvider::class,
     Webkul\Claims\ClaimsServiceProvider::class,
+    Webkul\Payslip\PayslipServiceProvider::class,
 ];
