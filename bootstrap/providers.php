@@ -4,6 +4,7 @@ return [
     App\Providers\AppServiceProvider::class,
     App\Providers\Filament\AdminPanelProvider::class,
     App\Providers\Filament\CustomerPanelProvider::class,
+    App\Providers\Filament\StaffPanelProvider::class,
     Webkul\Analytic\AnalyticServiceProvider::class,
     Webkul\Account\AccountServiceProvider::class,
     Webkul\Blog\BlogServiceProvider::class,
